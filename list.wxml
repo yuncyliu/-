@@ -1,0 +1,41 @@
+<!--pages/list/list.wxml-->
+<view class="container">
+  <view class="bg"></view>
+  <view class="header">
+    <image src="/image/my.jpg" class="avatar" mode="scaleToFill"/>
+    <view class="nickName">刘桦好烦</view>
+    <view class="code">
+      <text>ID:55671544614865</text>
+      <text class="copy_id"  bindtap="copyId">复制</text>
+    </view>
+    <image src="/image/arrow.png" class="arrow" mode="scaleToFill" bindtap="toEditUserPage"/>
+  </view>
+  <view class="main">
+    <navigator url="../withdraw/withdraw" class="item">
+      <view class="val">校园认证</view>
+      <text>上海财经大学</text>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </navigator>
+    <navigator url="../mypublish/mypublish" class="item">
+      <view class="val">浏览记录</view>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </navigator>
+    <navigator url="../myorder/myorder" class="item">
+      <view class="val">拼单记录</view>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </navigator>
+    <navigator url="../mysellorder/mysellorder" class="item">
+      <view class="val">登录/注销账号</view>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </navigator>
+    <view class="item" bindtap="openSetting">
+      <view class="val">权限设置</view>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </view>
+    <view class="item" bindtap="makePhoneCall">
+      <view class="val">信誉分</view>
+      <text>100</text>
+      <image src="/image/arrow.png" class="icon" mode="scaleToFill"/>
+    </view>
+  </view>
+</view>
