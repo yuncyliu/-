@@ -3,7 +3,7 @@
   <view class="bg"></view>
   <view class="header">
     <image src="/image/my.jpg" class="avatar" mode="scaleToFill"/>
-    <view class="nickName">刘桦好烦</view>
+    <view class="nickName">刘云曦</view>
     <view class="code">
       <text>ID:55671544614865</text>
       <text class="copy_id"  bindtap="copyId">复制</text>
