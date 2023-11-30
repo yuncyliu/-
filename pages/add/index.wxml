@@ -1,0 +1,55 @@
+<!--pages/team/teamadd.wxml-->
+<!--pages/fabu/fabu.wxml-->
+<van-cell-group>
+  <van-field value="{{ username }}" clearable label="标题" placeholder="请输入标题" bind:input="title" />
+  <van-field clearable value="{{ password }}" label="联系方式" placeholder="请输入联系方式" bind:input="phone" />
+  <van-field label="时间" readonly placeholder="请选择出发时间" value="{{ time }}" bind:click-input="showPopup1">
+  </van-field>
+  <view class="box">
+    <view>
+      拼车人数
+    </view>
+    <view style="margin-left: 70rpx;">
+      <van-stepper value="{{ num }}" min="1" max="10" bind:change="onChange1" />
+    </view>
+  </view>
+  <van-field value="{{ message }}" label="留言" bind:input="talk" type="textarea" placeholder="请输入留言" autosize border="{{ false }}" />
+  <view style="width: 100%;height: 80rpx;display: flex;flex-direction: row;align-items: center;background-color: rgb(255, 255, 255);">
+    <view style="font-size: 25rpx;margin-left: 30rpx;color: rgb(92, 92, 92);">
+      类型
+    </view>
+    <view style="font-size: 25rpx;margin-left: 125rpx;color: {{value=='请选择类型'?'rgb(184, 184, 184)':'rgb(92, 92, 92);'}};" bindtap="showPopup">
+      {{value}}
+    </view>
+  </view>
+  <van-field clearable value="{{ chatname }}" label="群聊名称" placeholder="请输入群聊名称" bind:input="chatname" />
+</van-cell-group>
+
+<van-divider contentPosition="center">上传图片</van-divider>
+<view class="img-wrap">
+    <block wx:for="{{imgList}}" wx:key="index" data-url="{{imgList[index]}}">
+        <view class="one-img">
+            <image src="{{item.tempFilePath}}" class="img-choose"></image>
+            <image src="/images/close.png" class="close-img" bindtap="deleteImg" data-index="{{index}}"></image>
+        </view>
+    </block>
+
+    <view class="one-img" bindtap="chooseImage" wx:if="{{imgList.length < 3}}">
+        <image src="../../images/add.png" class="img-choose"></image>
+    </view>
+</view>
+
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 40%" bind:close="onClose">
+  <van-picker confirm-button-text='确认' columns="{{ columns }}" bind:change="onChange2" />
+</van-popup>
+
+
+<van-popup show="{{ show1 }}" round position="bottom" custom-style="height: 47%" bind:close="onClose1">
+  <van-datetime-picker  type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onInput" />
+</van-popup>
+
+
+
+<view class="btn" bindtap="send">
+  发布
+</view>

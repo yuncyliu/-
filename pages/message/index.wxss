@@ -1,0 +1,29 @@
+/* pages/message/index.wxss */
+.box{
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 0.5rpx solid rgb(224, 224, 224);
+}
+.right{
+  width: 600rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+
+}
+.top{
+  width: 100%;
+  height: 56rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.text{
+  font-size: 26rpx;
+  color: gray;
+}

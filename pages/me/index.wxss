@@ -1,0 +1,290 @@
+/* pages/my/my.wxss */
+/* 顶部个人界面样式 */
+page {
+  background-color: #ffffff;
+}
+
+.scroll_H {
+  display: inline-block;
+  max-height: 400rpx;
+  box-sizing: border-box;
+}
+.img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.top {
+  background-image: linear-gradient(#ffffff, #fdfdfd);
+}
+
+.top .word {
+  margin: 60rpx 20rpx 40rpx 20rpx;
+  font-size: 14pt;
+  font-weight: bold;
+  height: 60rpx;
+}
+
+.top .message {
+  display: flex;
+  align-items: center;
+}
+
+.top-top {
+  margin: 10rpx 20rpx;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.top .left {
+
+  margin: 10rpx 20rpx;
+  background-color: #fff;
+  padding: 40rpx;
+  border-radius: 20rpx;
+}
+
+
+/* 头像样式 */
+.top image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 50%;
+
+
+}
+
+/* 个人昵称样式 */
+.top text {
+  margin-left: 40rpx;
+  color: black;
+  margin-top: 10rpx;
+  font-size: 13pt;
+  font-weight: bold;
+
+}
+
+/* 用户剩余 */
+.money-sheng {
+  background-color: #fff;
+  margin: -95rpx 30rpx 10rpx 30rpx;
+  border-radius: 15rpx;
+  padding: 35rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.money-sheng .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.money-sheng .money {
+  font-weight: bold;
+  margin-top: 12rpx;
+  font-size: 15pt;
+  letter-spacing: 0.1em;
+
+}
+
+.money-sheng .right {
+  background-color: #f3e2a4;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 15rpx 60rpx;
+  border-radius: 40rpx;
+  color: #976822;
+  font-size: 12pt;
+}
+
+/* 菜单区域 */
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10rpx 30rpx 20rpx 30rpx;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.menu-list .item {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  width: 50%;
+  justify-content: center;
+
+}
+
+.menu-list .item2 {
+  border-bottom-left-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+
+.menu-list .item3 {
+  border-bottom-right-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+
+}
+
+.menu-list .item1 .top {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+  height: 120rpx;
+  width: 100%;
+  margin-top: 10rpx;
+  border-radius: 20rpx;
+  position: absolute;
+}
+
+.menu-list .item1 image {
+  margin-left: 55rpx;
+}
+
+.menu-list .item1 .word {
+
+  margin-bottom: 60rpx;
+}
+
+.item1 .fankui {
+  position: relative;
+  top: 0;
+  left: 30rpx;
+  opacity: 0;
+}
+
+.menu-list .item image,
+.menu-list .item1 image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.menu-list .item .word,
+.menu-list .item1 .word {
+  margin-left: 10rpx;
+
+  letter-spacing: 0.1em;
+  font-size: 12pt;
+  font-weight: 800;
+}
+
+/* 其他功能 */
+.more-meau {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+  padding: 40rpx;
+  margin: 5rpx 30rpx 20rpx 30rpx;
+  border-radius: 15rpx;
+}
+
+.more-meau .more-top-word {
+  font-weight: 550;
+  letter-spacing: 2rpx;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
+
+.more-meau .more-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more-meau .more-list .more-item,
+.more-meau .more-list .more-item .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.more-item image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.more-meau .more-list .more-item .more-word {
+  font-size: 10pt;
+  color: #828283;
+  margin-top: 10rpx;
+}
+
+.contact {
+  position: absolute;
+}
+
+.contacts-buto {
+  position: relative;
+  opacity: 0;
+
+}
+
+/* 骑手服务 */
+.qicenter {
+  background-color: #fff;
+  width: 710rpx;
+  margin: 20rpx;
+  padding-top: 30rpx;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 15rpx;
+}
+
+
+.qsword {
+  font-weight: 550;
+  font-size: 34rpx;
+  margin: 0 40rpx;
+}
+
+
+.cancle {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  bottom: 0;
+  color: #7f7f7f;
+}
+
+
+.qsmenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.qsmenu image {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 15rpx;
+}
+.qsitem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx;
+}
+.qsitem1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx;
+}
+.gang{
+  height: 100rpx;
+  border: 1px solid rgb(226, 218, 218);
+}

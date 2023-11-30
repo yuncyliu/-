@@ -1,0 +1,79 @@
+<!-- 拼车页面 -->
+<view wx:if="{{list.length==0}}">
+  <van-empty description="暂无内容" />
+</view>
+<view class="box" bindtap="detail" data-id="{{item._id}}">
+  <view class="top">
+    <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: aqua;"></view>
+    <view>{{list.title}}</view>
+  </view>
+  <view class="middle">
+    <view>联系方式：{{list.phone}}</view>
+    <view>留言：{{list.talk}}</view>
+    <view>出发时间：{{list.time}}</view>
+  </view>
+  <view class="btm">
+    发布时间：{{list.fabutime}}
+  </view>
+  <view wx:if="{{list.image.length!=0}}" style="margin-top: 10px;">
+    <view class="cu-form-group">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{list.image}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{item}}">
+          <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="margin: 10rpx 0;">
+    离拼团结束还有
+  </view>
+  <van-count-down time="{{ time }}" format="DD 天 HH 时 mm 分 ss 秒" />
+  <view style="margin: 10rpx 0;">
+    群聊
+  </view>
+  <view class="cu-list menu-avatar">
+    <view class="cu-item" style="margin-left: -25rpx;" bindtap="gochat"  data-id="{{Group._id}}" data-name="{{Group.topname}}">
+      <image class="cu-avatar radius" src="{{Group.topface}}" mode="" />
+      <view class="content">
+        <view class="text-pink">
+          <text class="text-cut">{{Group.topname}}</text>
+        </view>
+        <view class="text-gray text-sm flex">
+          <text wx:if="{{tag}}" class="text-cut">{{Group.chatinfo[Group.chatinfo.length-1].input}}</text>
+          <text wx:if="{{!tag}}" class="text-cut">你还未加入拼团，聊天信息不可见</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btm1">
+    <view style="margin: 10rpx 0;">
+      发布者
+    </view>
+    <block wx:for="{{list.arr}}" wx:key="index" wx:if="{{item.leader==true}}">
+      <view style="display: flex;flex-direction: row;align-items: center;">
+        <image src="{{item.face}}" style="width: 90rpx;height: 90rpx;border-radius:8rpx;" mode="" />
+        <view style="margin: 0 20rpx;font-size: 30rpx;font-weight: 600;">
+          {{item.name}}
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="btm1">
+    <view style="margin: 15rpx 0;">
+      加入成员（已有{{list.arr.length}}人/差{{list.num-list.arr.length}}人)
+    </view>
+    <block wx:for="{{list.arr}}" wx:key="index" wx:if="{{item.leader==false}}">
+      <view style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;">
+        <view style="display: flex;flex-direction: row;align-items: center;">
+          <image src="{{item.face}}" style="width: 90rpx;height: 90rpx;border-radius:15rpx;" mode="" />
+          <view style="margin: 0 20rpx;font-size: 30rpx;font-weight: 600;">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view style="width: 100%;height: 60rpx;margin: 70rpx 0 10rpx 0;background:{{tag==true?'#e54d42':'#349ec8'}};display: flex;flex-direction: row;align-items: center;justify-content: center;color: white ;border-radius: 10rpx;" bindtap="{{tag==true?'':'add'}}">
+    {{tag==true?'您已加入':'加入'}}
+  </view>
+</view>

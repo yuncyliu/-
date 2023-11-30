@@ -1,0 +1,29 @@
+<!--pages/mysend/index.wxml-->
+<!-- 拼车页面 -->
+<view wx:if="{{list.length==0}}">
+  <van-empty description="暂无内容" />
+</view>
+<block wx:for="{{list}}" wx:key="index">
+  <view class="box">
+    <view class="top" bindtap="goinfo" data-id="{{item.dataid}}">
+      <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: aqua;"></view>
+      <view>{{item.title}}</view>
+      <!-- <image src="../../images/jt.png" style="width: 60rpx;height: 50rpx;" /> -->
+      <!-- <view>{{item.end}}</view> -->
+    </view>
+    <view class="middle">
+      <view>联系方式：{{item.phone}}</view>
+      <view>留言：{{item.talk}}</view>
+      <view>时间：{{item.time}}</view>
+    </view>
+    <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+            <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

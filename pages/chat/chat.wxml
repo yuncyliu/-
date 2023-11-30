@@ -1,0 +1,107 @@
+<!--pages/chat/chat.wxml-->
+<!-- <view wx:if="{{lei==1}}" bindtap="showPopup">成员</view> -->
+<view class="cu-chat">
+  <block wx:for="{{chatinfo}}" wx:key="index">
+    <view wx:if="{{item.type==2}}" class="cu-info round">{{item.input}}</view>
+    <view wx:if="{{item.type==1&&item.openid==openid}}">
+      <view class="cu-item self">
+        <view class="main" style="flex-direction: column;">
+          <view class="content bg-green shadow" style="height: 40rpx;">
+            <text>{{item.input}}</text>
+          </view>
+        </view>
+        <image bindtap="showModal" data-target="Modal" data-index="{{index}}" class="cu-avatar radius" src="{{item.face}}" mode="" />
+        <view class="date">{{item.time}}</view>
+      </view>
+    </view>
+    <view wx:if="{{item.type==1&&item.openid!=openid}}">
+      <view class="cu-item">
+        <image bindtap="showModal" data-target="Modal" data-index="{{index}}" class="cu-avatar radius" src="{{item.face}}" mode="" />
+        <view class="main">
+          <view class="content shadow">
+            <text>{{item.input}}</text>
+          </view>
+        </view>
+        <view class="date">{{item.time}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 80%" bind:close="onClose">
+  <view class="ppp">
+    <block wx:for="{{member}}" wx:key="">
+
+      <view class="item">
+        <image src="{{item.face}}"></image>
+        <view>{{item.zh}}</view>
+      </view>
+    </block>
+  </view>
+</van-popup>
+
+<!-- <view class="pub-comment">
+    <view class="action">
+        <image catch:longpress="handleRecordStart" catch:touchmove="handleTouchMove" catch:touchend="handleRecordStop" class="img2" src="../../images/voice.png"></image>
+        <image bindtap="selectImg"  class="img2" src="../../images/img.png"></image>
+    </view>
+    <view class="pub-left">
+        <input class="pub-input" placeholder="在此输入内容" value="{{inputValue}}" bindinput="getInputValue"></input>
+    </view>
+    <view class="pub-button" bindtap="publishComment">发送</view>
+</view> -->
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <view class="action">
+    <text bindtap="showModal" data-target="bottomModal" class="cuIcon-sort text-grey"></text>
+  </view>
+
+  <input class="solid-bottom" bindblur="getInputValue" value="{{inputValue}}" placeholder="请输入内容" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+
+  <button style="width: 200rpx;" bindtap="publishComment" class="cu-btn bg-green shadow">发送</button>
+</view>
+
+
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">用户信息</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view style="color: rgb(95, 95, 95);">
+        <view style="margin-bottom: 10rpx;">
+          角色：{{info.openid==openid?'群主':"普通成员"}}
+        </view>
+        <view style="margin-bottom: 10rpx;">
+          用户昵称：{{info.name}}
+        </view>
+        <view style="margin-bottom: 10rpx;">
+          openid{{info.openid}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog" style="height: 80%;background-color: white;">
+    <view class="cu-bar bg-white">
+      <view class="action text-blue" bindtap="hideModal">取消</view>
+    </view>
+    <van-divider contentPosition="center">群成员</van-divider>
+    <view style="width: 710rpx;margin: 20rpx;display: flex;flex-direction: row;flex-wrap: wrap;">
+      <view wx:for="{{member}}" wx:key="index" style="margin: 15rpx 20rpx;height: 150rpx;width: 140rpx;display: flex;flex-direction: column;align-items: center;justify-content: space-between;"> 
+        <image style="width: 100rpx;height: 100rpx;border-radius:8px;" src="{{item.face}}" mode=""/>
+        <view>
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

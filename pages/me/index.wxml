@@ -1,0 +1,42 @@
+<!-- 顶部登录后的 -->
+<view class="top">
+  <view class="word"></view>
+  <view class="message">
+    <view class="top-top">
+      <image src="{{src}}"></image>
+      <text wx:if="{{login}}" bindtap="cancledenglu">{{name}}</text>
+      <text wx:if="{{!login}}" bindtap="login">点击登录</text>
+
+    </view>
+    <view class="left">
+      <van-icon size='80rpx' name="service-o" />
+    </view>
+  </view>
+
+</view>
+
+
+
+<!-- 菜单区域 -->
+<view class="menu-list">
+  <view class="item item2" bindtap="{{login==true?'gotosend':''}}">
+    <image src="/images/dd.png"></image>
+    <view class="word">我的发布</view>
+  </view>
+  <view class="item item3" bindtap="{{login==true?'gotoadd':''}}">
+    <image class="img" src="/images/apprise.png"></image>
+    <view class="word">我的加入</view>
+  </view>
+</view>
+
+
+
+<view class="menu-list">
+  <scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{Tab}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+</view>
