@@ -1,0 +1,18 @@
+<!--pages/message/index.wxml-->
+<view wx:if="{{list.length==0}}">
+  <van-empty description="暂无内容" />
+</view>
+<block wx:for="{{Groupchat}}" wx:key="index">
+    <view class="box" bindtap="gochat" bindlongpress="del" data-id="{{item.list[0]._id}}" data-name="{{item.topname}}">
+        <image class="cu-avatar radius margin-left" src="{{item.list[0].topface}}"></image>
+        <view class="right">
+            <view class="top">
+                <view>{{item.topname}}</view>
+                <view>{{item.list[0].chatinfo[item.list[0].chatinfo.length-1].time}}</view>
+            </view>
+            <view class="btm">
+                <view class="text">{{item.list[0].chatinfo[item.list[0].chatinfo.length-1].input}}</view>
+            </view>
+        </view>
+    </view>
+</block>

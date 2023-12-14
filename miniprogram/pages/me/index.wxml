@@ -1,0 +1,112 @@
+<!-- 顶部登录后的 -->
+<!-- <view class="container" style="width: 675rpx; height: 300rpx; display: block; box-sizing: border-box"> -->
+<view class="bg"></view>
+<view class="header" style="position: relative; top:-50rpx; width: 750rpx; height: 312rpx; display: flex; box-sizing: border-box">
+  <!-- 头像 -->
+  <image src="{{src}}" style="position: relative;display: flex;top:50rpx;justify-content: center; width: 160rpx; height: 160rpx; border-radius: 50%; box-sizing: border-box"></image>
+  <text wx:if="{{login}}" bindtap="goEdit" style="width: auto; display: flex; box-sizing: border-box; font-size: 45rpx; position: relative;top: 60rpx;justify-content: center;">{{name}}</text>
+  <!-- <text wx:if="{{!login}}" bindtap="login">点击登录</text> -->
+  <!-- <image src="/images/arrow.png" class="arrow" mode="scaleToFill" bindtap="toEditUserPage" /> -->
+</view>
+<view class="left">
+</view>
+<view class="main" style=" position: relative;top:-75rpx;width: 750rpx; height: 617rpx; display: flex; box-sizing: border-box">
+  <navigator url="../withdraw/withdraw" class="item" style="width: 750rpx; height: 106rpx; display: flex; box-sizing: border-box;border-radius: 150rpx;">
+    <view class="val">校园认证</view>
+    <text>上海财经大学</text>
+    <image style="width: 68rpx; height: 40rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx" src="/images/arrow.png" class="icon" mode="scaleToFill" />
+  </navigator>
+  <!-- '<navigator url="../mypublish/mypublish" class="item" style="width: 750rpx; height: 104rpx; display: flex; box-sizing: border-box;border-radius: 150rpx;">
+      <view class="val">浏览记录</view>
+      <image style="width: 68rpx; display: flex; box-sizing: border-box; left: 1rpx; top: 2rpx; position: relative; height: 40rpx" src="../../images/arrow.png" class="icon" mode="scaleToFill"/>
+    </navigator> -->
+  <navigator url="../myorder/myorder" class="item" style="width: 750rpx; height: 101rpx; display: flex; box-sizing: border-box;border-radius: 150rpx;">
+    <view class="item item3" bindtap="{{login==true?'gotoadd':''}}" style="width: 666rpx; height: 83rpx; display: flex; box-sizing: border-box">
+      <view class="val">我的加入</view>
+      <image style="width: 68rpx; height: 40rpx; display: block; box-sizing: border-box; left: 85rpx; top: 2rpx; position: relative" src="/images/arrow.png" class="icon" mode="scaleToFill" />
+    </view>
+  </navigator>
+  <navigator url="../myorder/myorder" class="item" style="width: 750rpx; height: 101rpx; display: flex; box-sizing: border-box;border-radius: 150rpx;">
+    <view class="item item2" bindtap="{{login==true?'gotosend':''}}" style="width: 640rpx; height: 104rpx; display: flex; box-sizing: border-box;">
+      <view class="val">我的发布</view>
+      <image style="width: 68rpx; height: 40rpx; display: block; box-sizing: border-box; left: 107rpx; top: -5rpx; position: relative" src="/images/arrow.png" class="icon" mode="scaleToFill" />
+    </view>
+  </navigator>
+  <navigator url="../mysellorder/mysellorder" class="item" style="width: 750rpx; height: 104rpx; display: flex; box-sizing: border-box;border-radius: 150rpx;">
+    <view class="item item3" style="border-radius: 150rpx;" bindtap="{{login==true?'login':''}}" bindtap="showModal" data-target="DialogModal1">
+      <view class="val">注销账号</view>
+      <image style="width: 68rpx; height: 40rpx; display: block; box-sizing: border-box; left: -8rpx; top: 0rpx" src="/images/arrow.png" class="icon" mode="scaleToFill" />
+    </view>
+  </navigator>
+  <view class="item" bindtap="openSetting" style="width: 750rpx; height: 101rpx; display: flex; box-sizing: border-box; border-radius: 150rpx">
+    <view class="val">权限设置</view>
+    <image style="width: 68rpx; height: 40rpx; display: block; box-sizing: border-box; left: -8rpx; top: 0rpx" src="/images/arrow.png" class="icon" mode="scaleToFill" />
+  </view>
+  <!-- 客服 -->
+  <button class="kefu" open-type="contact" bindcontact="handleContact" style="width: 750rpx; height: 101rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">
+    <text style="position: relative; left: -320rpx; top: 6rpx">客服</text>
+    <image style="width: 40rpx; height: 40rpx; display: block; box-sizing: border-box; position: relative; left: 633rpx; top: -40rpx" src="/images/arrow.png" />
+  </button>
+</view>
+<!-- </view> -->
+
+
+
+
+
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">注销账号注意事项</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl" style="text-align: left;">
+      <view>1.注销账号之前确保退出已参加的团或者删除自己已发布的团，若已参加的团或者本人发布的团已截止则不需要退出或删除！</view>
+      <view>2.注销账户会删除本人发布的团（已截止的团）和退出已参加团（已截止的团）,此操做为单向操作，删除后不可找回！</view>
+      <view>3.注销账号会删除数据库中的个人信息，以及清除缓存内容！</view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button style="width: 50%;margin-right:20rpx" class="cu-btn line-purple text-green light" bindtap="hideModal">取消</button>
+        <button style="width: 50%;" class="cu-btn bg-purple margin-left light" bindtap="confirm">确定</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">注意</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl" style="text-align: left;">
+      <view>您有以下还未截止的内容：</view>
+      <view wx:if="{{SendData.length!=0}}">
+        <view>本人发布：</view>
+        <view wx:for="{{SendData}}" wx:key="index">
+          <view>{{index+1}}.{{item.title}}</view>
+        </view>
+      </view>
+      <view wx:if="{{AddData.length!=0}}">
+        <view>加入的团：</view>
+        <view wx:for="{{AddData}}" wx:key="index">
+          <view>{{index+1}}.{{item.title}}</view>
+        </view>
+      </view>
+      <view>需要删除本人发布或加入的团（未截止）才能注销账号！</view>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <!-- <button style="width: 50%;margin-right:20rpx" class="cu-btn line-green text-green " bindtap="hideModal">取消</button> -->
+        <button style="width: 100%;" class="cu-btn bg-purple light margin-left" bindtap="hideModal">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

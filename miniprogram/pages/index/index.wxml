@@ -1,0 +1,161 @@
+<!--pages/team/team.wxml-->
+<view class="container">
+<view>
+  <van-search bind:change="onChange" bind:search="search" bind:search="onSearch" bindconfirm="search" type="text" show-action placeholder="输入搜索关键词" background="#ffffff" />
+</view>
+
+<view wx:if="{{lookserch}}">
+  <view class="cu-form-group">
+    <view class="grid col-5 grid-square flex-sub">
+      <view wx:for="{{columns}}" wx:key="{{index}}">
+        <view class="item" bindtap="tabSelect" data-id="{{index}}">
+          <image class="imgclass" src="{{index==TabCur ? selectedImageList[index] : imageList[index]}}" />
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="menu-list">
+    <scroll-view scroll-x class="bg-white nav">
+      <view class="flex text-center">
+        <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{columns}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+          {{item}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- <van-tabs active="{{ active }}" bind:change="onChange2">
+    <van-tab title="全部"> -->
+  <!-- 拼车页面 -->
+  <view wx:if="{{list.length==0||show==true}}">
+    <van-empty description="暂无内容" />
+  </view>
+  <block wx:for="{{list}}" wx:if="{{TabCur==0}}" wx:key="index">
+    <view class="box" bindtap="goinfo" data-id="{{item._id}}">
+      <view class="top">
+        <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: #b7ebc2;"></view>
+        <view class="fatherstyle">
+          <view>{{item.title}}</view>
+          <view class="type-container"><view class="type-text">{{item.type}}</view></view>
+        </view>
+        
+        <!-- <image src="../../images/jt.png" style="width: 60rpx;height: 50rpx;" /> -->
+        <!-- <view>{{item.end}}</view> -->
+      </view>
+      <view style="height: 15rpx;background-color: rgb(255, 255, 255s);"></view>
+      <view class="middle" bindtap="detail" data-id="{{item._id}}">
+        <view>详情：{{item.talk}}</view>
+        <view>截止时间：{{item.time}}</view>
+      </view>
+      <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+        <view class="cu-form-group">
+          <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+              <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btm">
+        <view>已加入：</view>
+        <view class="rigth">
+          <block wx:if="{{item.arr.length > 5}}">
+            <block wx:for="{{item.arr}}" wx:for-item="item" wx:for-index="index" wx:key="index" wx:if="{{index < 5}}">
+              <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+            </block>
+          </block>
+
+          <block wx:else>
+            <block wx:for="{{item.arr}}" wx:for-item="item" wx:key="index">
+              <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+            </block>
+          </block>
+          <!-- <image wx:if="{{item.arr.length!=item.num}}" bindtap="add" data-index="{{index}}" src="../../images/add1.png" style="width: 55rpx;height: 55rpx;" /> -->
+        </view>
+        <view>已有{{item.arr.length}}人/差{{item.num-item.arr.length}}人</view>
+      </view>
+    </view>
+  </block>
+  <block wx:for="{{list}}" wx:if="{{TabCur!==0&&item.type==columns[TabCur]}}" wx:key="index">
+    <view class="box" bindtap="goinfo" data-id="{{item._id}}">
+      <view class="top">
+        <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: #b7ebc2;"></view>
+        <view>{{item.title}}</view>
+        <!-- <image src="../../images/jt.png" style="width: 60rpx;height: 50rpx;" /> -->
+        <!-- <view>{{item.end}}</view> -->
+      </view>
+      <view class="middle" bindtap="detail" data-id="{{item._id}}">
+        <!-- <view>联系方式：{{item.phone}}</view> -->
+        <view>详情：{{item.talk}}</view>
+        <view>时间：{{item.time}}</view>
+      </view>
+      <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+        <view class="cu-form-group">
+          <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+              <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btm">
+        <view>已加入：</view>
+        <view class="rigth">
+          <block wx:if="{{item.arr.length > 5}}">
+            <block wx:for="{{item.arr}}" wx:for-item="item" wx:for-index="index" wx:key="index" wx:if="{{index < 5}}">
+              <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+            </block>
+          </block>
+
+          <block wx:else>
+            <block wx:for="{{item.arr}}" wx:for-item="item" wx:key="index">
+              <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+            </block>
+          </block>
+          <!-- <image wx:if="{{item.arr.length!=item.num}}" bindtap="add" data-index="{{index}}" src="../../images/add1.png" style="width: 55rpx;height: 55rpx;" /> -->
+        </view>
+        <view>已有{{item.arr.length}}人/差{{item.num-item.arr.length}}人</view>
+      </view>
+    </view>
+  </block>
+
+
+
+</view>
+<view wx:if="{{!lookserch}}">
+  <block wx:for="{{list4}}" wx:key="index">
+    <view class="box" bindtap="goinfo" data-id="{{item._id}}">
+      <view class="top">
+        <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: #b7ebc2;"></view>
+        <view>{{item.title}}</view>
+      </view>
+      <view class="middle" bindtap="detail" data-id="{{item._id}}">
+        <!-- <view>联系方式：{{item.phone}}</view> -->
+        <view>留言：{{item.talk}}</view>
+        <view>时间：{{item.time}}</view>
+      </view>
+      <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+        <view class="cu-form-group">
+          <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+              <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btm">
+        <view>已加入：</view>
+        <view class="rigth">
+          <block wx:for="{{item.arr}}" wx:for-item="item" wx:key="index">
+            <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+          </block>
+          <!-- <image wx:if="{{item.arr.length<4}}" bindtap="add" data-index="{{index}}" src="../../images/add1.png" style="width: 55rpx;height: 55rpx;" /> -->
+        </view>
+        <view>已有{{item.arr.length}}人/差{{item.num-item.arr.length}}人</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="float-button"bind:tap="navigateToPage">
+<image src="../../images/add5.png"class="float-icon"/></view>
+</view>

@@ -1,0 +1,142 @@
+/* pages/add/index.wxss */
+/* pages/team/teamadd.wxss */
+page{
+    background-color: #8034c809; 
+  }
+
+.blankstyle{
+  width: 100%;
+  height: 20rpx;
+  background-color: #8034c800;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.btn{
+  font-size: 40rpx;
+  color:#fff;
+  width: 40%;
+  height: 80rpx;
+  margin: 100rpx 30% 50rpx;
+  border-radius: 15rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #8034c81e;
+  border:2px solid rgb(157,143,162);
+}
+
+.btn:active {
+    background-color: #79729b; 
+  }
+
+.box{
+  width: 100%;
+  height: 110rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  color: rgb(99, 99, 99);
+}
+
+.txt{
+  margin: 30rpx;
+  color:#7d4c9e7a;
+  letter-spacing: 4rpx;
+}
+
+.custom-class .van-stepper__minus{
+  background-color: #f5f1f7;
+}
+
+.custom-class .van-stepper__plus {
+  background-color: #eee8f2;
+}
+
+.custom-class .van-stepper__input {
+    color:#8f8b91;
+    background-color: #f1edf5;
+  }
+
+.type {
+    width: 100%;
+    height: 106rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-top: 1rpx solid #8034c809;
+    color: rgb(99, 99, 99);
+}  
+
+.textstyle {
+    margin-right: 10px; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 130px;
+    display: flex;
+    align-items: center;
+  }
+
+.arrow2 {
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 45px;
+    display: flex;
+    align-items: center;
+  }
+
+/* 图片选择区域 */
+.img-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* margin: 20rpx 30rpx; */
+  /* justify-content: center; */
+}
+.one-img {
+  position: relative;
+  margin: 4rpx 8rpx;
+}
+.img-choose {
+  width: 200rpx;
+  height: 200rpx;
+  margin:0rpx 5rpx 0rpx 5rpx;
+  text-align: center;
+}
+.close-img {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 4rpx;
+  top: 4rpx;
+}
+.btnbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80rpx;
+}
+.btn1{
+    background-color: #8034c848;
+    width: 550rpx;
+    border-radius: 50rpx;
+    color: white;
+    letter-spacing: 10rpx;
+}
+.booen{
+    width: 710rpx;
+    margin: 20rpx;
+}

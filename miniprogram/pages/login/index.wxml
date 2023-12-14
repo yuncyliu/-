@@ -1,0 +1,21 @@
+<!--pages/login/index.wxml-->
+<view style="height: 200rpx;"></view>
+<view class="box">
+  <image wx:if="{{!src}}" style="border: 2px solid rgb(224, 205, 33);" src="../../images/face.png"  mode=""/>
+  <image wx:if="{{src}}" src="{{src}}"  mode=""/>
+  <button wx:if="{{!src}}" hover-class="none" class="getUserInfo" plain="true" open-type="chooseAvatar" bindchooseavatar="bindchooseavatar" style="font-size: 30rpx;">
+    请点此处获取头像
+  </button>
+</view>
+<form>
+	<view class="cu-form-group margin-top" style="margin-left: 20rpx;">
+		<view class="title">昵称</view>
+		<input 	maxlength='10' bindinput="onChange" type="nickname" bind:change="onChange" value="{{ name }}" placeholder="请输入昵称"></input>
+	</view>
+</form>
+<view class="box">
+ 
+  <button style="width: 246rpx; background-color: #8034c81e; color: rgb(157,143,162); font-size: 32rpx; height: 78rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx" type="primary" bindtap="login">确认登陆</button>
+  
+
+</view>

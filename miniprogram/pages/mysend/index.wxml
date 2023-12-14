@@ -1,0 +1,46 @@
+<!--pages/mysend/index.wxml-->
+<!-- 拼车页面 -->
+<view wx:if="{{list.length==0}}">
+  <van-empty description="暂无内容" />
+</view>
+
+<block wx:for="{{list}}" wx:key="index">
+  <view class="box" bindlongpress="Delete" data-id="{{item._id}}">
+    <view class="top"  bindtap="goinfo" data-id="{{item._id}}">
+      <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: #b7ebc2;"></view>
+      <view>{{item.title}}</view>
+    </view>
+    <view class="middle" bindtap="detail" data-id="{{item._id}}">
+      <view>类型：{{item.type}}</view>
+      <view>详情：{{item.talk}}</view>
+      <view>截止时间：{{item.time}}</view>
+    </view>
+    <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+            <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btm">
+      <view>已加入：</view>
+      <view class="rigth">
+        <block wx:if="{{item.arr.length > 5}}">
+          <block wx:for="{{item.arr}}" wx:for-item="item" wx:for-index="index" wx:key="index" wx:if="{{index < 5}}">
+            <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+          </block>
+        </block>
+
+        <block wx:else>
+          <block wx:for="{{item.arr}}" wx:for-item="item" wx:key="index">
+            <image src="{{item.face}}" style="width: 45rpx;height: 45rpx;border-radius: 100%;" mode="" />
+          </block>
+        </block>
+      </view>
+      <view>已有{{item.arr.length}}人/差{{item.num-item.arr.length}}人</view>
+    </view>
+  </view>
+</block>
+<text style="color: rgba(128, 128, 128, 0.7);display: flex;justify-content: center;align-items: center;">长按可删除我发布的团</text>

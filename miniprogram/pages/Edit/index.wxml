@@ -1,0 +1,30 @@
+<!--pages/login/index.wxml-->
+<view style="height: 80rpx;"></view>
+<view class="box">
+  <image wx:if="{{!src}}" style="border: 2px solid rgb(224, 205, 33);" src="../../images/face.png"  mode=""/>
+  <image wx:if="{{src}}" src="{{src}}"  mode=""/>
+  <button  hover-class="none" class="getUserInfo" plain="true" open-type="chooseAvatar" bindchooseavatar="bindchooseavatar" style="font-size: 30rpx; top: 20rpx;">
+    点击此处获取头像
+  </button>
+</view>
+<!-- <van-cell-group>
+  <van-field
+    value="{{ name }}"
+    required
+    clearable
+    label="用户名"
+    icon="question-o"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+    bind:change="onChange"
+  />
+</van-cell-group> -->
+<form>
+	<view class="cu-form-group margin-top">
+		<view class="title" style="font-size: 40rpx;margin-left: 50rpx;">*昵称</view>
+		<input maxlength='10' bindinput="onChange" type="nickname" bind:change="onChange" value="{{ name }}" placeholder="请输入昵称" style="margin-left: 80rpx;"></input>
+	</view>
+</form>
+<view class="box">
+  <button style="width: 246rpx; background-color: #8034c81e; color: rgb(157,143,162); font-size: 32rpx; height: 78rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx" type="primary" bindtap="edit">确认修改</button>
+</view>

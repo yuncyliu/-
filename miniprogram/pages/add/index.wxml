@@ -1,0 +1,79 @@
+<!--pages/team/teamadd.wxml-->
+<!--pages/fabu/fabu.wxml-->
+<van-cell-group>
+  <view class="type">
+  <van-field value="{{ username }}" clearable label="标题" placeholder="请输入标题" bind:input="title" />
+  </view>
+  <!-- <view style="border-top: 1px solid #fff">
+  <van-field clearable value="{{ password }}" label="联系方式" placeholder="请输入联系方式" bind:input="phone" />
+  </view> -->
+<view class="type">
+  <van-field label="类型" readonly bind:click-input="showPopup">
+    <view slot="input" style="display: flex; align-items: center; white-space: nowrap;">
+      <text class="textstyle" style = "color: {{value == '选择'?'rgb(184, 184, 184)':'rgb(92, 92, 92);'}}">{{ value }}</text>
+      <image src="/images/arrow.png" class="arrow" bindtap="showPopup" mode="scaleToFill" />
+    </view>
+  </van-field>
+</view>
+
+  <view class="type">  
+  <view>
+    <van-field label="截止时间" readonly bind:click-input="showPopup1">
+      <view slot="input" style="display: flex; align-items: center;">
+        <text class="textstyle" style = "color: {{time == '选择拼团截止时间'?'rgb(184, 184, 184)':'rgb(92, 92, 92);'}}">{{ time }}</text>
+        <image src="/images/arrow.png" class="arrow2" bindtap="showPopup1" mode="scaleToFill"/>
+      </view>
+    </van-field>
+  </view> 
+  </view> 
+  
+  <view class="box" style="border-top: 1px solid #fff">
+    <view style="font-size: 15px;margin-left: 5px;">
+      总人数
+    </view>
+    <view class = "van-stepper custom-class" style="margin-left: 50px; ">
+      <van-stepper value="{{ num }}" min="1" max="100" bind:change="onChange1"/>
+    </view>
+  </view>
+
+  <view class="type">
+  <van-field clearable value="{{ chatname }}" label="群聊名称" placeholder="请输入群聊名称" bind:input="chatname" />
+  </view>
+  <!-- <view class="type">
+  <van-field value="{{ message }}" label="留言" bind:input="talk" type="textarea" placeholder="请输入留言" autosize border="{{ false }}" />
+  </view> -->
+
+</van-cell-group>
+<view class="blankstyle"></view>
+<van-cell-group >
+<view style="border-top: 1px solid #fff;">
+<van-field value="{{ message }}" label="详情" bind:input="talk" type="textarea" placeholder="请输入详情内容" autosize border="{{ false }}" />
+
+<view class="img-wrap" style="background-color: #fff;">
+    <block wx:for="{{imgList}}" wx:key="index" data-url="{{imgList[index]}}">
+        <view class="one-img">
+            <image src="{{item.tempFilePath}}" class="img-choose"></image>
+            <image src="/images/close.png" class="close-img" bindtap="deleteImg" data-index="{{index}}"></image>
+        </view>
+    </block>
+
+    <view class="one-img" bindtap="chooseImage" wx:if="{{imgList.length < 3}}">
+        <image src="../../images/add.jpg" class="img-choose"></image>
+    </view>
+</view>
+</view>
+</van-cell-group>
+
+<view>
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 40%" bind:close="onClose">
+  <van-picker confirm-button-text='确认' columns="{{ columns }}" bind:change="onChange2" />
+</van-popup>
+</view>
+
+<van-popup show="{{ show1 }}" round position="bottom" custom-style="height: 47%" bind:close="onClose1">
+  <van-datetime-picker  type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onInput" />
+</van-popup>
+
+<view class="btn" bindtap="send">
+  确认发布
+</view>

@@ -1,0 +1,32 @@
+<!--pages/mysend/index.wxml-->
+<!-- 拼车页面 -->
+<view wx:if="{{list.length==0}}">
+  <van-empty description="暂无内容" />
+</view>
+<block wx:for="{{list}}" wx:key="index">
+  <view class="box">
+    <view class="top" bindtap="goinfo" data-id="{{item.dataid}}">
+      <view style="width:30rpx;height:30rpx;border-radius: 100%;margin: 15rpx;background-color: #b7ebc2;"></view>
+      <view>{{item.title}}</view>
+      <!-- <image src="../../images/jt.png" style="width: 60rpx;height: 50rpx;" /> -->
+      <!-- <view>{{item.end}}</view> -->
+    </view>
+    <view class="middle">
+      <view>类型：{{item.type}}</view>
+      <view>详情：{{item.talk}}</view>
+      <view>截止时间：{{item.time}}</view>
+    </view>
+    <view wx:if="{{item.image.length!=0}}" style="margin-top: 10px;">
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{item.image}}" wx:key="{{index}}">
+            <image src='{{item}}' data-url="{{item}}" mode='aspectFill'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class=" flex flex-direction">
+      <button class="cu-btn bg-purple light lg" bindtap="exit" data-id="{{item._id}}" data-dataid="{{item.dataid}}" style="position: relative; left: 0rpx; top: 15rpx; width: 253rpx; height: 80rpx; display: flex; box-sizing: border-box;margin-bottom:15rpx;">退出</button>
+    </view>
+  </view>
+</block>
